@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-
+from flask import render_template, url_for, flash, redirect, request, send_from_directory, Response, jsonify, abort
 
 def create_app(test_config=None):
     # create and configure the app
@@ -25,8 +25,8 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
-    return app
+    @app.route('/')
+    def index():
+        return render_template('index.html', title='Index')
+    
+    return app    
